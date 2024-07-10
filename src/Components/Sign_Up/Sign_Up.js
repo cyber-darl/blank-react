@@ -16,9 +16,8 @@ const Sign_Up = () => {
         e.preventDefault();
 
         // API Call
-        const response = await fetch(`${API_URL}api/auth/register`, {
+        const response = await fetch(`${API_URL}/api/auth/register`, {
             method: "POST",
-            mode: "no-cors",
             headers: {
                 "Content-Type": "application/json",
             },
@@ -31,7 +30,7 @@ const Sign_Up = () => {
             }),
         });
 
-        const json = await response.text();
+        const json = await response.json();
 
         if (json.authtoken) {
             sessionStorage.setItem("auth-token", json.authtoken);
@@ -57,42 +56,28 @@ const Sign_Up = () => {
         <div className="container" style={{marginTop:'5%'}}>
         <div className="signup-grid">
         <div className="signup-form">
-         <form method="POST" onSubmit={register}>
-         <div className="form-group">
+        <form method="POST" onSubmit={register}>
+                        <div className="form-group">
+                            <label htmlFor="email">Email</label>
+                            <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" name="email" id="email" className="form-control" placeholder="Enter your email" aria-describedby="helpId" />
+                            {showerr && <div className="err" style={{ color: 'red' }}>{showerr}</div>}
+                        </div>
+                        {/* Apply similar logic for other form elements like name, phone, and password to capture user information */}
+                        <div className="form-group">
            <label htmlFor="name">Name</label>
            <input value={name} type="text" onChange={(e) => setName(e.target.value)} name="name" id="name" className="form-control" placeholder="Enter your name" aria-describedby="helpId" />
-           {showerr && <div className="err" style={{ color: 'red' }}>{showerr}</div>}
        </div>
-
-           <div className="form-group">
-                <label htmlFor="email">Email</label>
-                 <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" name="email" id="email" className="form-control" placeholder="Enter your email" aria-describedby="helpId" />
-                 {showerr && <div className="err" style={{ color: 'red' }}>{showerr}</div>}
-                        </div>
-
-
-<div className="form-group">
-           <label htmlFor="password">Password</label>
-           <input value={password} onChange={(e) => setPassword(e.target.value)} name="password" id="password" className="form-control" placeholder="Enter your password" aria-describedby="helpId" />
-           {showerr && <div className="err" style={{ color: 'red' }}>{showerr}</div>}
-       </div>
-     
        <div className="form-group">
            <label htmlFor="phone">Phone</label>
            <input value={phone} onChange={(e) => setPhone(e.target.value)} type="tel" name="phone" id="phone" className="form-control" placeholder="Enter your phone number" aria-describedby="helpId" />
-           {showerr && <div className="err" style={{ color: 'red' }}>{showerr}</div>}
        </div>
-    
-      
-       <div class="btn-group">
-                        <button type="submit" class="btn btn-primary mb-2 mr-1 waves-effect waves-light">Submit</button>
-                        <button type="reset" class="btn btn-danger mb-2 waves-effect waves-light">Reset</button>
-                    </div>
+       <div className="form-group">
+           <label htmlFor="password">Password</label>
+           <input value={password} onChange={(e) => setPassword(e.target.value)} name="password" id="password" className="form-control" placeholder="Enter your password" aria-describedby="helpId" />
 
-                        
-
-
-         </form>
+       </div>
+       <button type="Submit" class="btn btn-primary mb-2 mr-1 waves-effect waves-light">Submit</button>
+                    </form>
          </div>
          </div>
          </div>
