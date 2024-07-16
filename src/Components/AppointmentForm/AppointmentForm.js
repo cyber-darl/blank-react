@@ -3,8 +3,8 @@ import React, { useState } from 'react'
 const AppointmentForm = ({ doctorName, doctorSpeciality, onSubmit }) => {
     const [name, setName] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
-    const [date, setDate] = useState('');
-    const [selectedSlot, setSelectedSlot] = useState(null);
+    const [date, setDate] = useState(new Date());
+    const [selectedSlot, setSelectedSlot] = useState('');
   
     const handleSlotSelection = (slot) => {
       setSelectedSlot(slot);
@@ -12,10 +12,11 @@ const AppointmentForm = ({ doctorName, doctorSpeciality, onSubmit }) => {
   
     const handleFormSubmit = (e) => {
       e.preventDefault();
-      onSubmit({ name, phoneNumber });
+      onSubmit({ name, phoneNumber, date, selectedSlot });
       setName('');
       setPhoneNumber('');
       setDate('');
+      setSelectedSlot('');
 
     };
   
@@ -51,6 +52,27 @@ const AppointmentForm = ({ doctorName, doctorSpeciality, onSubmit }) => {
             required
           />
         </div>
+        <div>
+        <label htmlFor="selectedSlot">
+
+Book a time slot
+
+<select    type="dropdown"
+            id="selectedSlot"
+            value={selectedSlot}
+            onChange={(e) => setSelectedSlot(e.target.value)}
+            required>
+
+  <option selectedSlot="fruit">Fruit</option>
+
+  <option selectedSlot="vegetable">Vegetable</option>
+
+  <option selectedSlot="meat">Meat</option>
+
+</select>
+
+</label>
+</div>
         <button type="submit">Book Now</button>
       </form>
     );

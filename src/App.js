@@ -10,9 +10,7 @@ import Login from './Components/Login/Login';
 import Navbar from './Components/Navbar/Navbar';
 import Landing_Page from './Components/Landing_Page/Landing_Page';
 
-import FindDoctorSearch from './Components/FindDoctorSearch/FindDoctorSearch';
-import DoctorCard from './Components/DoctorCard/DoctorCard';
-import AppointmentForm from './Components/AppointmentForm/AppointmentForm';
+import BookingConsultation from './Components/BookingConsultation';
 
 // Function component for the main App
 function App() {
@@ -32,9 +30,9 @@ function App() {
                 <Route path ="/Sign_Up" element={<Sign_Up/>} />
                 <Route path ="/Login" element={<Login/>} />
                 <Route path ="/Navbar" element={<Navbar/>} />
-               <Route path="/doctor-card" element={<DoctorCard />} />
-                <Route path="/find-doctor-search" element={<FindDoctorSearch />} />
-                   <Route path="/appointmentform" element={<AppointmentForm />} />
+          
+              
+                   <Route path="/booking-consultation" element={<BookingConsultation />} />
               </Routes>
         </BrowserRouter>
     </div>

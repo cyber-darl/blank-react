@@ -1,11 +1,13 @@
 import React from "react"; // Importing the necessary modules from React library
 import { Link } from "react-router-dom"; // Importing the Link component from react-router-dom library
+import Navbar from '../Navbar/Navbar';
 import "./LandingPage.css"; // Importing the CSS styles for the Landing_Page component
 
 // Defining the Function component Landing_Page
 const Landing_Page = () => {
   return (
     <section className="hero-section"> {/* Creating a section with class name 'hero-section' */}
+    <Navbar/>
       <div>
         <div data-aos="fade-up" className="flex-hero"> {/* Creating a div with data-aos attribute and class name 'flex-hero' */}
             
