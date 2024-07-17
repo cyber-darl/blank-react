@@ -63,11 +63,11 @@ Book a time slot
             onChange={(e) => setSelectedSlot(e.target.value)}
             required>
 
-  <option selectedSlot="fruit">Fruit</option>
+  <option selectedSlot="time1">9:00am</option>
 
-  <option selectedSlot="vegetable">Vegetable</option>
+  <option selectedSlot="time2">10:0a0m</option>
 
-  <option selectedSlot="meat">Meat</option>
+  <option selectedSlot="time3">11:00am</option>
 
 </select>
 
