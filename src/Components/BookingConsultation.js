@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './InstantConsultationBooking/InstantConsultation.css';
 import { useNavigate, useSearchParams } from 'react-router-dom';
+import Navbar from './Navbar/Navbar'; //Importing the navigation bar component
 import FindDoctorSearch from './FindDoctorSearch/FindDoctorSearch';
 import DoctorCard from './DoctorCard/DoctorCard';
 
@@ -59,7 +60,9 @@ const BookingConsultation = () => {
     }, [searchParams])
 
     return (
+        
         <center>
+            <Navbar/>
             <div  className="searchpage-container">
             <FindDoctorSearch onSearch={handleSearch} />
             <div className="search-results-container">
@@ -82,4 +85,4 @@ const BookingConsultation = () => {
     )
 }
 
-export default  BookingConsultation
+export default  BookingConsultation;
