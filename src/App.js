@@ -11,7 +11,9 @@ import Navbar from './Components/Navbar/Navbar';
 import Landing_Page from './Components/Landing_Page/Landing_Page';
 import Notification from './Components/Notification/Notification';
 import DoctorCard from './Components/DoctorCard/DoctorCard';
+import Chilling from './Components/Chilling';
 import BookingConsultation from './Components/BookingConsultation';
+import FindDoctorSearch from './Components/FindDoctorSearch/FindDoctorSearch';
 
 // Function component for the main App
 function App() {
@@ -30,7 +32,7 @@ function App() {
                 <Route path ="/Sign_Up" element={<Sign_Up/>} />
                 <Route path ="/Login" element={<Login/>} />
                 <Route path ="/Navbar" element={<Navbar/>} />
-                 <Route path ="/Notification" element={<Notification/>} />
+                 <Route path ="/Notification" element={<Chilling />} />
                  <Route path ="/DoctorCard" element={<DoctorCard/>} />
 
                    <Route path="/booking-consultation" element={<BookingConsultation />} />

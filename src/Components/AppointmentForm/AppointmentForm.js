@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-const AppointmentForm = ({ doctorName, doctorSpeciality, onSubmit }) => {
+const AppointmentForm = ({ doctorName, doctorSpeciality, onSubmi }) => {
     const [name, setName] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
     const [date, setDate] = useState(new Date());
@@ -9,10 +9,10 @@ const AppointmentForm = ({ doctorName, doctorSpeciality, onSubmit }) => {
     const handleSlotSelection = (slot) => {
       setSelectedSlot(slot);
     };
-  
+ 
     const handleFormSubmit = (e) => {
       e.preventDefault();
-      onSubmit({ name, phoneNumber, date, selectedSlot });
+      onSubmi({ name, phoneNumber, date, selectedSlot });
       setName('');
       setPhoneNumber('');
       setDate('');
@@ -78,4 +78,4 @@ Book a time slot
     );
   };
 
-export default AppointmentForm
+export default AppointmentForm;

@@ -7,3 +7,8 @@ Follow these steps to view in your local machine
 - ensure you are in the root file
 - then run npm start - this launches the react app on localhost
 
+to push, run the following commands
+git add -A OR git add .
+git commit -m "commit message"
+git push
+

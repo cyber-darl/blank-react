@@ -10,7 +10,7 @@ const app = express();
 app.set('view engine','ejs')
 app.use(express.static('public'))
 
-const PORT = process.env.PORT || 8181;
+const PORT = process.env.PORT || 4000 ;
 
 
 // Middleware
@@ -23,10 +23,15 @@ connectToMongo();
 // Routes
 app.use('/api/auth', require('./routes/auth'));
 
-app.get('/', (req, res) => {
-    res.send('Hello World!');
-});
+const User = require('./models/User');
 
+
+app.post("/", async (req, res)=>{
+    let user = new User(req.body);
+    let result = await user.save();
+    res.send(result);
+
+})
 
 
   // Start the server

@@ -3,7 +3,7 @@ import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import './DoctorCard.css';
 import AppointmentForm from '../AppointmentForm/AppointmentForm'
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from 'uuid'; //for giving every appointment a unique ID
 
 
 const DoctorCard = ({ name, speciality, experience, ratings, profilePic }) => {
@@ -27,6 +27,7 @@ const DoctorCard = ({ name, speciality, experience, ratings, profilePic }) => {
     const updatedAppointments = [...appointments, newAppointment];
     setAppointments(updatedAppointments);
     setShowModal(false);
+    console.log("e dey work o")
   };
 
   return (
@@ -96,7 +97,7 @@ const DoctorCard = ({ name, speciality, experience, ratings, profilePic }) => {
                   ))}
                 </>
               ) : (
-                <AppointmentForm doctorName={name} doctorSpeciality={speciality} onSubmit={handleFormSubmit} />
+                <AppointmentForm doctorName={name} doctorSpeciality={speciality} onSubmi={handleFormSubmit} />
               )}
             </div>
           )}
