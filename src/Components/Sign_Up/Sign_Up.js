@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Sign_Up.css'
+import './Sign_Up.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { API_URL } from '../../config';
 
@@ -15,75 +15,115 @@ const Sign_Up = () => {
     const register = async (e) => {
         e.preventDefault();
 
-        // API Call
-        const response = await fetch(`http://localhost:4000/`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                name: name,
-                email: email,
-                password: password,
-                phone: phone,
+        try {
+            const response = await fetch(`http://localhost:4001/`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    name,
+                    email,
+                    password,
+                    phone,
+                    role: 'user', // Default role
+                }),
+            });
 
-            }),
-        });
+            const json = await response.json();
+            console.log('Server response:', json);
+            localStorage.setItem('auth-token', 'test-token');
+            console.log(localStorage.getItem('auth-token'));
+            
 
-        const json = await response.json();
 
-        if (json.authtoken) {
-            sessionStorage.setItem("auth-token", json.authtoken);
-            sessionStorage.setItem("name", name);
-            // phone and email
-            sessionStorage.setItem("phone", phone);
-            sessionStorage.setItem("email", email);
-            // Redirect to home page
-            navigate("/");   //on directing to home page you need to give logic to change login and signup buttons with name of the user and logout button where you have implemented Navbar functionality
-            window.location.reload();
-        } else {
-            if (json.errors) {
-                for (const error of json.errors) {
-                    setShowerr(error.msg);
-                }
+            if (json.authToken) {
+                console.log("oya");
+                sessionStorage.setItem('auth-token', json.authToken);
+                sessionStorage.setItem('name', name);
+                sessionStorage.setItem('phone', phone);
+                sessionStorage.setItem('email', email);
+
+                navigate('/'); // Redirect
             } else {
-                setShowerr(json.error);
+                if (json.errors) {
+                    setShowerr(json.errors.map((error) => error.msg).join(', '));
+                } else {
+                    setShowerr(json.error);
+                }
             }
+        } catch (error) {
+            console.error('Error during registration:', error);
+            setShowerr('An unexpected error occurred. Please try again.');
         }
     };
 
     return (
-        <div className="container" style={{marginTop:'5%'}}>
-        <div className="signup-grid">
-        <div className="signup-form">
-        <form method="POST" onSubmit={register}>
-                       
-                        {/* Apply similar logic for other form elements like name, phone, and password to capture user information */}
+        <div className="container" style={{ marginTop: '5%' }}>
+            <div className="signup-grid">
+                <div className="signup-form">
+                    <form method="POST" onSubmit={register}>
                         <div className="form-group">
-           <label htmlFor="name">Namessssssssssssssssssss</label>
-           <input value={name} type="text" onChange={(e) => setName(e.target.value)} name="name" id="name" className="form-control" placeholder="Enter your name" aria-describedby="helpId" />
-       </div>
-       <div className="form-group">
-                            <label htmlFor="email">Email</label>
-                            <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" name="email" id="email" className="form-control" placeholder="Enter your email" aria-describedby="helpId" />
-                            {showerr && <div className="err" style={{ color: 'red' }}>{showerr}</div>}
+                            <label htmlFor="name">Name</label>
+                            <input
+                                value={name}
+                                type="text"
+                                onChange={(e) => setName(e.target.value)}
+                                name="name"
+                                id="name"
+                                className="form-control"
+                                placeholder="Enter your name"
+                                required
+                            />
                         </div>
-       <div className="form-group">
-           <label htmlFor="phone">Phone</label>
-           <input value={phone} onChange={(e) => setPhone(e.target.value)} type="tel" name="phone" id="phone" className="form-control" placeholder="Enter your phone number" aria-describedby="helpId" />
-       </div>
-       <div className="form-group">
-           <label htmlFor="password">Password</label>
-           <input value={password} onChange={(e) => setPassword(e.target.value)} name="password" id="password" className="form-control" placeholder="Enter your password" aria-describedby="helpId" />
-       </div>
-      
-       <button type="Submit" class="btn btn-primary mb-2 mr-1 waves-effect waves-light">Submit</button>
+                        <div className="form-group">
+                            <label htmlFor="email">Email</label>
+                            <input
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                type="email"
+                                name="email"
+                                id="email"
+                                className="form-control"
+                                placeholder="Enter your email"
+                                required
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="phone">Phone</label>
+                            <input
+                                value={phone}
+                                onChange={(e) => setPhone(e.target.value)}
+                                type="tel"
+                                name="phone"
+                                id="phone"
+                                className="form-control"
+                                placeholder="Enter your phone number"
+                                required
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="password">Password</label>
+                            <input
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                name="password"
+                                id="password"
+                                type="password"
+                                className="form-control"
+                                placeholder="Enter your password"
+                                required
+                            />
+                        </div>
+                        {showerr && <div className="err" style={{ color: 'red' }}>{showerr}</div>}
+                        <button type="submit" className="btn btn-primary mb-2 mr-1 waves-effect waves-light">
+                            Submit
+                        </button>
                     </form>
-         </div>
-         </div>
-         </div>
- //Sign up role is not stored in database. You can apply logic for this according to your react code.
+                </div>
+            </div>
+        </div>
     );
-}
+};
 
 export default Sign_Up;

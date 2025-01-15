@@ -10,7 +10,7 @@ const app = express();
 app.set('view engine','ejs')
 app.use(express.static('public'))
 
-const PORT = process.env.PORT || 4000 ;
+const PORT = process.env.PORT || 4001 ;
 
 
 // Middleware
@@ -27,6 +27,7 @@ const User = require('./models/User');
 
 
 app.post("/", async (req, res)=>{
+
     let user = new User(req.body);
     let result = await user.save();
     res.send(result);
