@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import './Sign_Up.css';
 import { Link, useNavigate } from 'react-router-dom';
-import { API_URL } from '../../config';
 
 const Sign_Up = () => {
     const [name, setName] = useState('');
@@ -16,7 +15,7 @@ const Sign_Up = () => {
         e.preventDefault();
 
         try {
-            const response = await fetch(`http://localhost:4001/`, {
+            const response = await fetch('http://localhost:4001/api/auth/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -26,30 +25,27 @@ const Sign_Up = () => {
                     email,
                     password,
                     phone,
-                    role: 'user', // Default role
                 }),
             });
 
             const json = await response.json();
             console.log('Server response:', json);
-            localStorage.setItem('auth-token', 'test-token');
-            console.log(localStorage.getItem('auth-token'));
-            
 
-
-            if (json.authToken) {
-                console.log("oya");
-                sessionStorage.setItem('auth-token', json.authToken);
+            if (response.ok && json.authtoken) {
+                // Save token and user data in sessionStorage
+                sessionStorage.setItem('auth-token', json.authtoken);
                 sessionStorage.setItem('name', name);
                 sessionStorage.setItem('phone', phone);
                 sessionStorage.setItem('email', email);
 
-                navigate('/'); // Redirect
+                // Navigate to the desired page after successful signup
+                navigate('/');
             } else {
+                // Handle errors from the backend
                 if (json.errors) {
                     setShowerr(json.errors.map((error) => error.msg).join(', '));
                 } else {
-                    setShowerr(json.error);
+                    setShowerr(json.error || 'Signup failed. Please try again.');
                 }
             }
         } catch (error) {

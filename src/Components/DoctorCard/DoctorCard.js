@@ -2,24 +2,37 @@ import React, { useEffect, useState } from 'react';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import './DoctorCard.css';
-import AppointmentForm from '../AppointmentForm/AppointmentForm'
+import AppointmentForm from '../AppointmentForm/AppointmentForm';
+import Notification from '../Notification/Notification';
 import { v4 as uuidv4 } from 'uuid'; //for giving every appointment a unique ID
 
 
-const DoctorCard = ({ name, speciality, experience, ratings, profilePic }) => {
+const DoctorCard = ({ name, speciality, experience, ratings, profilePic, }) => {
   const [showModal, setShowModal] = useState(false);
   const [appointments, setAppointments] = useState([]);
 
   const handleBooking = () => {
     setShowModal(true);
   };
-
+  const doctorData = {
+    name: name,
+    specialty: speciality,
+  };
   const handleCancel = (appointmentId) => {
     const updatedAppointments = appointments.filter((appointment) => appointment.id !== appointmentId);
     setAppointments(updatedAppointments);
+    
+  
+    // remove doctorData in localStorage as a JSON string.
+    localStorage.removeItem('doctorData', JSON.stringify(doctorData));
+
+    window.location.reload();
+
+   
   };
 
   const handleFormSubmit = (appointmentData) => {
+    
     const newAppointment = {
       id: uuidv4(),
       ...appointmentData,
@@ -27,7 +40,9 @@ const DoctorCard = ({ name, speciality, experience, ratings, profilePic }) => {
     const updatedAppointments = [...appointments, newAppointment];
     setAppointments(updatedAppointments);
     setShowModal(false);
+    
     console.log("e dey work o")
+    
   };
 
   return (
@@ -42,6 +57,7 @@ const DoctorCard = ({ name, speciality, experience, ratings, profilePic }) => {
           <div className="doctor-card-detail-experience">{experience} years experience</div>
           <div className="doctor-card-detail-consultationfees">Ratings: {ratings}</div>
         </div>
+        <Notification/>
         {/* for reference  */}
         {/* <div>
               <button className='book-appointment-btn'>                    

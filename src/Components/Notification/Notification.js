@@ -16,7 +16,17 @@ const Notification = ({ children }) => {
     // Retrieve stored username, doctor data, and appointment data from sessionStorage and localStorage
     const storedUsername = sessionStorage.getItem('email');
     const storedDoctorData = JSON.parse(localStorage.getItem('doctorData'));
-    const storedAppointmentData = JSON.parse(localStorage.getItem(storedDoctorData?.name));
+    //const storedAppointmentData = JSON.parse(localStorage.getItem(storedDoctorData?.name));
+    const storedAppointmentData = storedDoctorData?.name;
+
+    
+
+  /*
+    console.log('Stored Username:', storedUsername);
+    console.log('Doctor Name Key:', storedDoctorData?.name);
+    console.log('Slot:', storedDoctorData?.selectedSlot);
+    console.log('Stored Doctor Data:', storedDoctorData);
+    console.log('Stored Appointment Data:', storedAppointmentData);*/
 
     // Set isLoggedIn state to true and update username if storedUsername exists
     if (storedUsername) {
@@ -33,25 +43,37 @@ const Notification = ({ children }) => {
     if (storedAppointmentData) {
       setAppointmentData(storedAppointmentData);
     }
-  }, []); // Empty dependency array ensures useEffect runs only once after initial render
+  
+  }, [doctorData]); // Empty dependency array ensures useEffect runs only once after initial render
 
   // Return JSX elements to display Navbar, children components, and appointment details if user is logged in
   return (
     <div>
       {/* Render Navbar component */}
-      <Navbar ></Navbar>
+      
       {/* Render children components */}
       {children}
       {/* Display appointment details if user is logged in and appointmentData is available */}
       {isLoggedIn && appointmentData && (
         <>
+        
           <div className="appointment-card">
             <div className="appointment-card__content">
               {/* Display title for appointment details */}
               <h3 className="appointment-card__title">Appointment Details</h3>
               <p className="appointment-card__message">
                 {/* Display doctor's name from doctorData */}
-                <strong>Doctor:</strong> {doctorData?.name}
+                <p><strong>Doctor:</strong> {doctorData?.doctorName}</p>
+                <p><strong>Specialty:</strong> {doctorData?.speciality}</p>
+                <p> <strong>name:</strong> {doctorData?.name}</p>
+                <p><strong>Phone:</strong> {doctorData?.phoneNumber}</p>
+                <p><strong>Date of Appointment:</strong> {doctorData?.date}</p>
+                <p><strong>Timeslot:</strong> {doctorData?.selectedSlot}</p>
+                
+               
+                
+                
+                
               </p>
             </div>
           </div>

@@ -3,6 +3,7 @@ import AOS from 'aos'; //Import script from animate on scroll css library
 import 'aos/dist/aos.css'; //Import styles from animate on scroll css library
 import { Link } from "react-router-dom"; // Importing the Link component from react-router-dom library
 import Navbar from '../Navbar/Navbar'; //Importing the navigation bar component
+import Notification from '../Notification/Notification';
 import "./LandingPage.css"; // Importing the CSS styles for the Landing_Page component
 
 // Defining the Function component Landing_Page
@@ -34,6 +35,7 @@ const Landing_Page = () => {
             <h4>
               Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eaque at quae ducimus. Suscipit omnis quibusdam non cum rem voluptatem!
             </h4>
+            <Notification/>
             <a href="#services"> {/* Creating a hyperlink to jump to the 'services' section */}
               <Link  className="button" to="/Sign_Up">Get Started</Link>{/* Creating a link with class name 'button to signup page' */}
             </a>
