@@ -1,16 +1,9 @@
 const express = require('express');
 const cors = require('cors');
-const http = require('http');
 const connectToMongo = require('./db');
 const app = express();
-
-
-
-
-app.set('view engine','ejs')
-app.use(express.static('public'))
-
-const PORT = process.env.PORT || 4001 ;
+const path = require('path');
+const PORT = process.env.PORT || 4001;
 
 
 // Middleware
@@ -23,17 +16,14 @@ connectToMongo();
 // Routes
 app.use('/api/auth', require('./routes/auth'));
 
-const User = require('./models/User');
+app.use(express.static(path.join(__dirname, 'build')));
 
-
-app.post("/", async (req, res)=>{
-
-    let user = new User(req.body);
-    let result = await user.save();
-    res.send(result);
-
-})
-
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+app.get('/', (req, res) => {
+    res.send('Hello World!');
+});
 
   // Start the server
 app.listen(PORT, () => {
