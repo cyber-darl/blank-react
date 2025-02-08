@@ -1,10 +1,10 @@
 const express = require('express');
 const cors = require('cors');
 const connectToMongo = require('./db');
-const app = express();
 const path = require('path');
-const PORT = process.env.PORT || 4001;
 
+const app = express();
+const PORT = process.env.PORT || 4001;
 
 // Middleware
 app.use(express.json());
@@ -13,19 +13,20 @@ app.use(cors());
 // Connect to MongoDB
 connectToMongo();
 
-// Routes
-app.use('/api/auth', require('./routes/auth'));
+// Serve the React build folder **correctly**
+app.use(express.static(path.join(__dirname, '../build')));
 
-app.use(express.static(path.join(__dirname, 'build')));
-
+// Serve React app for all other routes
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
-});
-app.get('/', (req, res) => {
-    res.send('Hello World!');
+  res.sendFile(path.join(__dirname, '../build', 'index.html'));
 });
 
-  // Start the server
+// Health check route
+app.get('/', (req, res) => {
+  res.send('Hello from Express Server!');
+});
+
+// Start the server
 app.listen(PORT, () => {
-console.log(`Server is running on port http://localhost:${PORT}`);
+  console.log(`Server is running on http://localhost:${PORT}`);
 });

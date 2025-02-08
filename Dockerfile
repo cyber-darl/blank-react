@@ -16,8 +16,8 @@ COPY . .
 # Build the React app
 RUN npm run build
 
-# Expose the port the app runs on
-EXPOSE 3000
+# Expose the port that the backend server will listen on
+EXPOSE 4001
 
-# Start the app
-CMD ["npx", "serve", "-s", "build", "-l", "3000"]
+# Start the backend server (which will serve the frontend as well)
+CMD ["node", "server/index.js"]
