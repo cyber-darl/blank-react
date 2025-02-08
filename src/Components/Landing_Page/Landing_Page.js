@@ -33,7 +33,7 @@ const Landing_Page = () => {
                   <div className="blue1 blob"></div> {/* Creating a different blue blob inside the second 'blob-cont' div */}
               </div>
             <h4>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eaque at quae ducimus. Suscipit omnis quibusdam non cum rem voluptatem!
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eaque at quae ducimus. Buju bnxn scipit omnis quibusdam non cum rem voluptatem!
             </h4>
             <Notification/>
             <a href="#services"> {/* Creating a hyperlink to jump to the 'services' section */}
