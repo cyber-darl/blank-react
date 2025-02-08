@@ -6,6 +6,7 @@ Follow these steps to view in your local machine
 - once it is installed run npm install - this installs other needed dependencies
 - ensure you are in the root file
 - then run npm start - this launches the react app on localhost
+- this
 
 to push, run the following commands
 git add -A OR git add .

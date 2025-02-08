@@ -1,51 +1,51 @@
-// Import the 'path' module, which provides utilities for working with file paths
-const path = require('path');
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
-// Import the UglifyJsPlugin, which is used for minifying JavaScript code
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-
-// Import the MiniCssExtractPlugin, which is used for extracting CSS into a separate file
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-
-// Export the Webpack configuration as an object
 module.exports = {
-  // Specify the entry point of the application, which is the file that Webpack will start building from
-  entry: './src/index.js',
-
-  // Specify the output configuration
+  entry: "./src/index.js", // Main entry file
   output: {
-    // Specify the path where the output file will be generated
-    path: path.resolve(__dirname, 'dist'),
-    // Specify the filename of the output file
-    filename: 'bundle.js',
+    path: path.resolve(__dirname, "dist"), // Output folder
+    filename: "bundle.js", // Compiled bundle
+    clean: true, // Cleans the output folder before each build
   },
-
-  // Specify the module configuration
+  mode: "development", // Set to 'production' for production builds
+  devtool: "inline-source-map", // Helps with debugging
+  devServer: {
+    static: path.resolve(__dirname, "dist"),
+    compress: true,
+    hot: true,
+    port: 3000,
+    historyApiFallback: true, // Allows using React Router
+  },
   module: {
-    // Specify an array of rules for processing different types of files
     rules: [
       {
-        // Specify a rule for processing JavaScript files
-        test: /\.js$/,
-        // Exclude files in the node_modules directory from being processed
+        test: /\.(js|jsx)$/, // Transpile JS and JSX files
         exclude: /node_modules/,
-        // Use the babel-loader to process JavaScript files
-        use: 'babel-loader',
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: ["@babel/preset-env", "@babel/preset-react"],
+          },
+        },
       },
       {
-        // Specify a rule for processing CSS files
-        test: /\.css$/,
-        // Use the MiniCssExtractPlugin.loader and css-loader to process CSS files
-        use: [MiniCssExtractPlugin.loader, 'css-loader'],
+        test: /\.css$/, // Load CSS files
+        use: ["style-loader", "css-loader"],
+      },
+      {
+        test: /\.(png|jpg|gif|svg)$/, // Load images
+        type: "asset/resource",
       },
     ],
   },
-
-  // Specify an array of plugins to use
+  resolve: {
+    extensions: [".js", ".jsx"], // Allow importing files without extensions
+  },
   plugins: [
-    // Use the UglifyJsPlugin to minify the JavaScript code
-    new UglifyJsPlugin(),
-    // Use the MiniCssExtractPlugin to extract CSS into a separate file
-    new MiniCssExtractPlugin({ filename: 'styles.css' }),
+    new HtmlWebpackPlugin({
+      template: "./public/index.html", // HTML template
+      filename: "index.html",
+    }),
   ],
 };
