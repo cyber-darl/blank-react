@@ -1,0 +1,50 @@
+name: Deploy to IBM Cloud Code Engine
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Install IBM Cloud CLI
+        run: |
+          curl -fsSL https://clis.cloud.ibm.com/install/linux | sh
+          ibmcloud --version
+
+      - name: Authenticate with IBM Cloud
+        env:
+          IBMCLOUD_API_KEY: ${{ secrets.IBM_CLOUD_API_KEY }}
+        run: |
+          ibmcloud login --apikey "$IBMCLOUD_API_KEY" -r us-east
+
+      - name: Target Resource Group
+        run: |
+          ibmcloud target -g Default
+
+      - name: Install IBM Cloud Code Engine Plugin
+        run: |
+          ibmcloud plugin install code-engine
+
+      - name: Build Docker Image
+        run: |
+          docker build -t docker.io/cyberdarl/blankee:latest .
+
+      - name: Log in to Docker Hub
+        run: |
+          echo "${{ secrets.DOCKER_PASSWORD }}" | docker login --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
+
+      - name: Push Docker Image to Docker Hub
+        run: |
+          docker push docker.io/cyberdarl/blankee:latest
+
+      - name: Deploy to IBM Cloud Code Engine
+        run: |
+          ibmcloud ce project select --name blankreact
+          ibmcloud ce application update --name blankee --image docker.io/cyberdarl/blankee:latest
