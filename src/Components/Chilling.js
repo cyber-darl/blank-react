@@ -24,7 +24,7 @@ const Chilling = () => {
     setTimeout(() => {
       setCount((count) => count + 1);
     }, 1000);
-  }, []); // <- add empty brackets here
+  }, []); // <- add empty brackets here na
   return(
  
     <>
