@@ -14,5 +14,5 @@ git commit -m "commit message"
 git push
 
 how to push to a branch in git
--
+- git branch, push to the localhost
 
