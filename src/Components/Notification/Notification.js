@@ -69,10 +69,6 @@ const Notification = ({ children }) => {
                 <p><strong>Date of Appointment:</strong> {doctorData?.date}</p>
                 <p><strong>Timeslot:</strong> {doctorData?.selectedSlot}</p>
                 
-               
-                
-                
-                
               </p>
             </div>
           </div>

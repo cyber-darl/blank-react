@@ -13,3 +13,6 @@ git add -A OR git add .
 git commit -m "commit message"
 git push
 
+how to push to a branch in git
+-
+
