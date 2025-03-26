@@ -73,7 +73,7 @@ const Sign_Up = () => {
                             />
                         </div>
                         <div className="form-group">
-                            <label htmlFor="email">Emaile</label>
+                            <label htmlFor="email">Email</label>
                             <input
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
