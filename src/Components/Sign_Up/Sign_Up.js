@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import './Sign_Up.css';
 import { Link, useNavigate } from 'react-router-dom';
-
+import { API_URL
+    
+ } from '../../config';
 const Sign_Up = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -15,7 +17,7 @@ const Sign_Up = () => {
         e.preventDefault();
 
         try {
-            const response = await fetch('http://localhost:4001/api/auth/register', {
+            const response = await fetch(`${API_URL}/api/auth/register`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
