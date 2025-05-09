@@ -1,3 +1,32 @@
+/* Navbar.css */
+
+.dropdowns {
+  position: relative;
+}
+
+.dropdown-menus {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  z-index: 999;
+  min-width: 160px;
+}
+
+.dropdown-items {
+  padding: 10px 15px;
+  display: block;
+  color: #333;
+  text-decoration: none;
+}
+
+.dropdown-items:hover {
+  background-color: #f0f0f0;
+  color: #000;
+}
+
 /** Header - Navbar */
 nav {
     padding: 1.5rem;

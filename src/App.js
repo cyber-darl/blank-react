@@ -13,6 +13,8 @@ import Notification from './Components/Notification/Notification';
 import DoctorCard from './Components/DoctorCard/DoctorCard';
 import Chilling from './Components/Chilling';
 import BookingConsultation from './Components/BookingConsultation';
+import ProfileCard from './Components/ProfileCard/ProfileCard';
+import ProfileForm from './Components/ProfileCard/ProfileForm';
 import FindDoctorSearch from './Components/FindDoctorSearch/FindDoctorSearch';
 
 // Function component for the main App
@@ -34,6 +36,8 @@ function App() {
                 <Route path ="/Navbar" element={<Navbar/>} />
                  <Route path ="/Notification" element={<Notification />} />
                  <Route path ="/DoctorCard" element={<DoctorCard/>} />
+                 <Route path ="/profile" element={<ProfileCard/>} />
+                 <Route path ="/profileform" element={<ProfileForm/>} />
 
                    <Route path="/booking-consultation" element={<BookingConsultation />} />
               </Routes>

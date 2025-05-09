@@ -7,6 +7,7 @@ import "./Navbar.css";
 
 const Navbar = () => {
     const [click, setClick] = useState(false);
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [username, setUsername] = useState("");
@@ -60,24 +61,44 @@ const Navbar = () => {
         <li className="link">
           <Link to="/">Home</Link>
         </li>
-         <li className="link">
-          <Link to="/Notification">Notification</Link>
-        </li>
-        <li className="link">
-          <Link to="/search/doctors">Appointments</Link>
-        </li>
-         <li className="link">
-          <Link to="/DoctorCard">DoctorCard</Link>
-        </li>
+     
+  
+       
           <li className="link">
           <Link to="/booking-consultation">Book a Consultation</Link>
         </li>
-        <li className="link">
-          <Link to="/healthblog">Health Blog</Link>
-        </li>
+       
         <li className="link">
          <Link to="/reviews">Reviews</Link>
         </li>
+        <li className="link">
+         <Link to="/ProfileCard">Profile</Link>
+        </li>
+        <li
+  className="link dropdowns"
+  onMouseEnter={() => setIsDropdownOpen(true)}
+  onMouseLeave={() => setIsDropdownOpen(false)}
+>
+  <Link to="#" className="dropdown-toggle">More</Link>
+
+  {isDropdownOpen && (
+    <ul className="dropdown-menus">
+      <li>
+        <Link to="/profileform" className="dropdown-items">View Profile</Link>
+      </li>
+      <li>
+        <Link to="/settings" className="dropdown-items">Settings</Link>
+      </li>
+      <li>
+        <span onClick={handleLogout} className="dropdown-items">Logout</span>
+      </li>
+    </ul>
+  )}
+</li>
+
+        
+
+        
         {isLoggedIn?(
           <>
             <li className="link">
