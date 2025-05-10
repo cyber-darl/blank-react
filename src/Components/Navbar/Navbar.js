@@ -87,10 +87,7 @@ const Navbar = () => {
         <Link to="/profileform" className="dropdown-items">View Profile</Link>
       </li>
       <li>
-        <Link to="/settings" className="dropdown-items">Settings</Link>
-      </li>
-      <li>
-        <span onClick={handleLogout} className="dropdown-items">Logout</span>
+        <Link to="/settings" className="dropdown-items">Check Reports</Link>
       </li>
     </ul>
   )}
