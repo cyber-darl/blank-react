@@ -44,6 +44,7 @@ width: 200px;
     margin-bottom: 2em;
 }
 
+
 .hero-section .button {
     padding: 0.7rem 2rem;
     border-radius: 25px;
@@ -101,9 +102,14 @@ button {
 
 
 @media screen and (max-width:980px) {
-    .hero-section h1 {
-        text-align: center;
-    }
+ .hero-section .flex-hero h1 {
+    font-size: 48px;
+    font-weight: 900;
+    text-align: center;
+}
+.blob-cont{
+    display: none;
+}
   
     .hero-section h4 {
         font-size: 21px;
