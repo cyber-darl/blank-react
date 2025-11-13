@@ -1,5 +1,7 @@
 /* Navbar.css */
-
+.link {
+  display: flex;
+}
 .dropdowns {
   position: relative;
 }
