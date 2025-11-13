@@ -16,7 +16,7 @@ const Landing_Page = () => {
     <section className="hero-section"> {/* Creating a section with class name 'hero-section' */}
    <Navbar/>
       <div>
-        <div data-aos="fade-up" className="flex-hero"> {/* Creating a div with data-aos attribute(from Animate On Scroll CSS Library) and class name 'flex-hero' */}
+        <div  className="flex-hero"> {/* Creating a div with data-aos attribute(from Animate On Scroll CSS Library) and class name 'flex-hero' */}
             <h1>
               Your Health<br/>
 
@@ -33,7 +33,7 @@ const Landing_Page = () => {
                   <div className="blue1 blob"></div> {/* Creating a different blue blob inside the second 'blob-cont' div */}
               </div>
             <h4>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eaque at quae ducimus. Suscipit omnis quibusdam non cum rem voluptatem!
+           Finding the right doctor shouldn't be complicated. Browse verified specialists, read real patient reviews, compare availability, and book your appointment in minutes
             </h4>
             <Notification/>
             <a href="#services"> {/* Creating a hyperlink to jump to the 'services' section */}
