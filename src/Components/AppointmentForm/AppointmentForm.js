@@ -81,7 +81,7 @@ Book a time slot
 
   <option selectedSlot="time1">9:00am</option>
 
-  <option selectedSlot="time2">10:0a0m</option>
+  <option selectedSlot="time2">10:00am</option>
 
   <option selectedSlot="time3">11:00am</option>
 
