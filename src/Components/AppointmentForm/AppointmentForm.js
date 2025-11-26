@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-const AppointmentForm = ({ doctorName, doctorSpecialty, userData, onSubmi }) => {
+const AppointmentForm = ({ doctorName, doctorSpeciality, onSubmi }) => {
     const [name, setName] = useState(userData?.name || '');
     const [email, setEmail] = useState(userData?.email ||'');
     const [date, setDate] = useState(new Date());
@@ -20,7 +20,7 @@ const AppointmentForm = ({ doctorName, doctorSpecialty, userData, onSubmi }) => 
 
       const doctorData = {
         doctorName: doctorName,
-        specialty: doctorSpecialty,
+        specialty: doctorSpeciality,
         name: name,
         email: email,
         date: date,
@@ -81,7 +81,7 @@ Book a time slot
 
   <option selectedSlot="time1">9:00am</option>
 
-  <option selectedSlot="time2">10:00am</option>
+  <option selectedSlot="time2">10:0a0m</option>
 
   <option selectedSlot="time3">11:00am</option>
 
