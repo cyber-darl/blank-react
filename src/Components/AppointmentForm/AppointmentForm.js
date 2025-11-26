@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 
-const AppointmentForm = ({ doctorName, doctorSpeciality, onSubmi }) => {
-    const [name, setName] = useState('');
-    const [phoneNumber, setPhoneNumber] = useState('');
+const AppointmentForm = ({ doctorName, doctorSpeciality, onSubmi, userData }) => {
+    const [name, setName] = useState(userData?.name || '');
+    const [email, setEmail] = useState(userData?.email ||'');
     const [date, setDate] = useState(new Date());
     const [selectedSlot, setSelectedSlot] = useState('');
   
@@ -12,9 +12,9 @@ const AppointmentForm = ({ doctorName, doctorSpeciality, onSubmi }) => {
  
     const handleFormSubmit = (e) => {
       e.preventDefault();
-      onSubmi({ name, phoneNumber, date, selectedSlot });
+      onSubmi({ name, email, date, selectedSlot });
       setName('');
-      setPhoneNumber('');
+      setEmail('');
       setDate('');
       setSelectedSlot('');
 
@@ -22,7 +22,7 @@ const AppointmentForm = ({ doctorName, doctorSpeciality, onSubmi }) => {
         doctorName: doctorName,
         specialty: doctorSpeciality,
         name: name,
-        phoneNumber: phoneNumber,
+        email: email,
         date: date,
         selectedSlot: selectedSlot
 
@@ -49,17 +49,17 @@ const AppointmentForm = ({ doctorName, doctorSpeciality, onSubmi }) => {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="phoneNumber">Phone Number:</label>
+          <label htmlFor="email">Email</label>
           <input
-            type="tel"
-            id="phoneNumber"
-            value={phoneNumber}
-            onChange={(e) => setPhoneNumber(e.target.value)}
+            type="email"
+            id="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             required
           />
         </div>
         <div className="form-group">
-          <label htmlFor="phoneNumber">Date of Appointment</label>
+          <label htmlFor="date">Date of Appointment</label>
           <input
             type="date"
             id="date"

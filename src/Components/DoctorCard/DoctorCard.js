@@ -9,6 +9,19 @@ import { v4 as uuidv4 } from 'uuid'; //for giving every appointment a unique ID
 const DoctorCard = ({ name, speciality, experience, ratings, profilePic, }) => {
   const [showModal, setShowModal] = useState(false);
   const [appointments, setAppointments] = useState([]);
+  const [userData, setUserData] = useState(null);
+
+  useEffect( () => {
+    const userName = sessionStorage.getItem('name');
+    const userEmail = sessionStorage.getItem('email');
+
+    if (userName || userEmail) {
+      setUserData ({
+        name: userName || '',
+        email: userEmail || '',
+      });
+    }
+  }, []);
 
   const handleBooking = () => {
     setShowModal(true);
@@ -103,7 +116,7 @@ const DoctorCard = ({ name, speciality, experience, ratings, profilePic, }) => {
                   {appointments.map((appointment) => (
                     <div className="bookedInfo" key={appointment.id}>
                       <p>Name: {appointment.name}</p>
-                      <p>Phone Number: {appointment.phoneNumber}</p>
+                      <p>Email: {appointment.email}</p>
                       <p>Date: {appointment.date}</p>
                       <p>Timeslot: {appointment.selectedSlot}</p>
                       <button onClick={() => handleCancel(appointment.id)}>Cancel Appointment</button>
@@ -111,7 +124,7 @@ const DoctorCard = ({ name, speciality, experience, ratings, profilePic, }) => {
                   ))}
                 </>
               ) : (
-                <AppointmentForm doctorName={name} doctorSpeciality={speciality} onSubmi={handleFormSubmit} />
+                <AppointmentForm  userData={userData}doctorName={name} doctorSpeciality={speciality} onSubmi={handleFormSubmit} />
               )}
             </div>
           )}
