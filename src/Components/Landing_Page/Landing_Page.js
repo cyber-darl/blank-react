@@ -33,7 +33,7 @@ const Landing_Page = () => {
             </h4>
             <Notification/>
             <a href="#services"> {/* Creating a hyperlink to jump to the 'services' section */}
-              <Link  className="button" to="/Sign_Up">Get Started</Link>{/* Creating a link with class name 'button to signup page' */}
+              <Link  className="button" to="/booking-consultation">Get Started</Link>{/* Creating a link with class name 'button to signup page' */}
             </a>
         </div>
       </div>
