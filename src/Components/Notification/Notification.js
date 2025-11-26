@@ -50,7 +50,7 @@ if (userClosedNotification === 'true') {
   }, [doctorData]); // Empty dependency array ensures useEffect runs only once after initial render
 
 const handleClose = () => {
-  localStorage.setItem('hideAppointmentCard, true');
+  localStorage.setItem('hideAppointmentCard', 'true');
   setShowNotification(false);
 };
   // Return JSX elements to display Navbar, children components, and appointment details if user is logged in
