@@ -3,7 +3,6 @@ import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import './DoctorCard.css';
 import AppointmentForm from '../AppointmentForm/AppointmentForm';
-import Notification from '../Notification/Notification';
 import { v4 as uuidv4 } from 'uuid'; //for giving every appointment a unique ID
 
 
@@ -57,7 +56,6 @@ const DoctorCard = ({ name, speciality, experience, ratings, profilePic, }) => {
           <div className="doctor-card-detail-experience">{experience} years experience</div>
           <div className="doctor-card-detail-consultationfees">Ratings: {ratings}</div>
         </div>
-        <Notification/>
         {/* for reference  */}
         {/* <div>
               <button className='book-appointment-btn'>                    
