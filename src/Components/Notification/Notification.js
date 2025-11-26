@@ -7,6 +7,7 @@ const Notification = ({ children }) => {
   // State variables to manage user authentication, username, doctor data, and appointment data
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [username, setUsername] = useState("");
+  const [showNotification, setShowNotification] = useState(true);
   const [doctorData, setDoctorData] = useState(null);
   const [appointmentData, setAppointmentData] = useState(null);
 
@@ -45,6 +46,9 @@ const Notification = ({ children }) => {
   
   }, [doctorData]); // Empty dependency array ensures useEffect runs only once after initial render
 
+const handleClose = () => {
+  setShowNotification(false)
+};
   // Return JSX elements to display Navbar, children components, and appointment details if user is logged in
   return (
     <div>
@@ -53,13 +57,16 @@ const Notification = ({ children }) => {
       {/* Render children components */}
       {children}
       {/* Display appointment details if user is logged in and appointmentData is available */}
-      {isLoggedIn && appointmentData && (
+      {isLoggedIn && appointmentData && showNotification (
         <>
         
           <div className="appointment-card">
             <div className="appointment-card__content">
               {/* Display title for appointment details */}
               <h3 className="appointment-card__title">Appointment Details</h3>
+    <button className="close-button" onClick={handleClose}>
+      x
+    </button>
               <p className="appointment-card__message">
                 {/* Display doctor's name from doctorData */}
                 <p><strong>Doctor:</strong> {doctorData?.doctorName}</p>
