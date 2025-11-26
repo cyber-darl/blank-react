@@ -13,6 +13,7 @@
 
 .close-button:hover {
   color: #333;
+  background: #0466c800;
 }
 .appointment-card {
     background-color: #fafafa;

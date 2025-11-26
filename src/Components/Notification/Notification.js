@@ -27,7 +27,10 @@ const Notification = ({ children }) => {
     console.log('Slot:', storedDoctorData?.selectedSlot);
     console.log('Stored Doctor Data:', storedDoctorData);
     console.log('Stored Appointment Data:', storedAppointmentData);*/
-
+const userClosedNotification = localStorage.getItem('hideAppointmentCard');
+if (userClosedNotification === 'true') {
+  setShowNotification(false);
+}
     // Set isLoggedIn state to true and update username if storedUsername exists
     if (storedUsername) {
       setIsLoggedIn(true);
@@ -47,7 +50,8 @@ const Notification = ({ children }) => {
   }, [doctorData]); // Empty dependency array ensures useEffect runs only once after initial render
 
 const handleClose = () => {
-  setShowNotification(false)
+  localStorage.setItem('hideAppointmentCard, true');
+  setShowNotification(false);
 };
   // Return JSX elements to display Navbar, children components, and appointment details if user is logged in
   return (
