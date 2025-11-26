@@ -30,7 +30,7 @@ const AppointmentForm = ({ doctorName, doctorSpeciality, onSubmi }) => {
     
       // Store doctorData in localStorage as a JSON string.
       localStorage.setItem('doctorData', JSON.stringify(doctorData));
-      
+      localStorage.removeItem('hideAppointmentCard');
     
 
 
