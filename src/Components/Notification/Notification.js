@@ -57,7 +57,7 @@ const handleClose = () => {
       {/* Render children components */}
       {children}
       {/* Display appointment details if user is logged in and appointmentData is available */}
-      {isLoggedIn && appointmentData && showNotification (
+      {isLoggedIn && appointmentData && showNotification && (
         <>
         
           <div className="appointment-card">
