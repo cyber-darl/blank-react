@@ -75,9 +75,9 @@ const handleClose = () => {
               <p className="appointment-card__message">
                 {/* Display doctor's name from doctorData */}
                 <p><strong>Doctor:</strong> {doctorData?.doctorName}</p>
-                <p><strong>Specialty:</strong> {doctorData?.speciality}</p>
+                <p><strong>Specialty:</strong> {doctorData?.specialty}</p>
                 <p> <strong>name:</strong> {doctorData?.name}</p>
-                <p><strong>Phone:</strong> {doctorData?.phoneNumber}</p>
+                <p><strong>Email:</strong> {doctorData?.email}</p>
                 <p><strong>Date of Appointment:</strong> {doctorData?.date}</p>
                 <p><strong>Timeslot:</strong> {doctorData?.selectedSlot}</p>
                 
