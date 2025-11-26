@@ -61,12 +61,13 @@ const handleClose = () => {
         <>
         
           <div className="appointment-card">
+             <button className="close-button" onClick={handleClose}>
+      x
+    </button>
             <div className="appointment-card__content">
               {/* Display title for appointment details */}
               <h3 className="appointment-card__title">Appointment Details</h3>
-    <button className="close-button" onClick={handleClose}>
-      x
-    </button>
+   
               <p className="appointment-card__message">
                 {/* Display doctor's name from doctorData */}
                 <p><strong>Doctor:</strong> {doctorData?.doctorName}</p>
