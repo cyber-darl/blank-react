@@ -6,7 +6,7 @@ import AppointmentForm from '../AppointmentForm/AppointmentForm';
 import { v4 as uuidv4 } from 'uuid'; //for giving every appointment a unique ID
 
 
-const DoctorCard = ({ name, speciality, experience, ratings, profilePic, }) => {
+const DoctorCard = ({ name, specialty, experience, ratings, profilePic, }) => {
   const [showModal, setShowModal] = useState(false);
   const [appointments, setAppointments] = useState([]);
   const [userData, setUserData] = useState(null);
@@ -28,7 +28,7 @@ const DoctorCard = ({ name, speciality, experience, ratings, profilePic, }) => {
   };
   const doctorData = {
     name: name,
-    specialty: speciality,
+    specialty: specialty,
   };
   const handleCancel = (appointmentId) => {
     const updatedAppointments = appointments.filter((appointment) => appointment.id !== appointmentId);
@@ -65,7 +65,7 @@ const DoctorCard = ({ name, speciality, experience, ratings, profilePic, }) => {
         </div>
         <div className="doctor-card-details">
           <div className="doctor-card-detail-name">{name}</div>
-          <div className="doctor-card-detail-speciality">{speciality}</div>
+          <div className="doctor-card-detail-specialty">{specialty}</div>
           <div className="doctor-card-detail-experience">{experience} years experience</div>
           <div className="doctor-card-detail-consultationfees">Ratings: {ratings}</div>
         </div>
@@ -104,7 +104,7 @@ const DoctorCard = ({ name, speciality, experience, ratings, profilePic, }) => {
                 </div>
                 <div className="doctor-card-details">
                   <div className="doctor-card-detail-name">{name}</div>
-                  <div className="doctor-card-detail-speciality">{speciality}</div>
+                  <div className="doctor-card-detail-specialty">{specialty}</div>
                   <div className="doctor-card-detail-experience">{experience} years experience</div>
                   <div className="doctor-card-detail-consultationfees">Ratings: {ratings}</div>
                 </div>
@@ -124,7 +124,7 @@ const DoctorCard = ({ name, speciality, experience, ratings, profilePic, }) => {
                   ))}
                 </>
               ) : (
-                <AppointmentForm  userData={userData}doctorName={name} doctorSpeciality={speciality} onSubmi={handleFormSubmit} />
+                <AppointmentForm  userData={userData} doctorName={name} doctorSpecialty={specialty} onSubmi={handleFormSubmit} />
               )}
             </div>
           )}
