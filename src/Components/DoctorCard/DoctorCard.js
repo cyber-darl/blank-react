@@ -14,6 +14,17 @@ const DoctorCard = ({ name, specialty, experience, ratings, profilePic, }) => {
   useEffect( () => {
     const userName = sessionStorage.getItem('name');
     const userEmail = sessionStorage.getItem('email');
+const storedDoctorData = JSON.parse(localStorage.getItem('doctorData'));
+if (storedDoctorData && storedDoctorData.doctorName === name) {
+    // If this doctor is booked in localStorage, set an appointment in state
+    setAppointments([{ 
+        id: 'stored-booking', 
+        name: storedDoctorData.name,
+        email: storedDoctorData.email,
+        date: storedDoctorData.date,
+        selectedSlot: storedDoctorData.selectedSlot
+    }]);
+}
 
     if (userName || userEmail) {
       setUserData ({
@@ -36,7 +47,7 @@ const DoctorCard = ({ name, specialty, experience, ratings, profilePic, }) => {
     
   
     // remove doctorData in localStorage as a JSON string.
-    localStorage.removeItem('doctorData', JSON.stringify(doctorData));
+    localStorage.removeItem('doctorData');
 
     window.location.reload();
 
