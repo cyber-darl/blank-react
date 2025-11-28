@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
 
-const AppointmentForm = ({ doctorName, doctorSpeciality, onSubmi }) => {
+const AppointmentForm = ({ doctorName, doctorSpeciality, onSubmi, userData }) => {
     const [name, setName] = useState(userData?.name || '');
     const [email, setEmail] = useState(userData?.email ||'');
     const [date, setDate] = useState(new Date());
     const [selectedSlot, setSelectedSlot] = useState('');
+    
+    const today = new Date().toISOString().split('T')[0];
   
     const handleSlotSelection = (slot) => {
       setSelectedSlot(slot);
@@ -12,6 +14,14 @@ const AppointmentForm = ({ doctorName, doctorSpeciality, onSubmi }) => {
  
     const handleFormSubmit = (e) => {
       e.preventDefault();
+// Check if selected date is in the past
+  const selectedDate = new Date(date);
+  const today = new Date();
+  
+  if (selectedDate < today) {
+    alert('Please select a future date');
+    return;
+  }
       onSubmi({ name, email, date, selectedSlot });
       setName('');
       setEmail('');
@@ -63,6 +73,7 @@ const AppointmentForm = ({ doctorName, doctorSpeciality, onSubmi }) => {
           <input
             type="date"
             id="date"
+            min={today}  
             value={date}
             onChange={(e) => setDate(e.target.value)}
             required
@@ -78,12 +89,12 @@ Book a time slot
             value={selectedSlot}
             onChange={(e) => setSelectedSlot(e.target.value)}
             required>
+ <option value="">Select a time</option> 
+  <option value="time1">9:00am</option>
 
-  <option selectedSlot="time1">9:00am</option>
+  <option value="time2">10:00am</option>
 
-  <option selectedSlot="time2">10:0a0m</option>
-
-  <option selectedSlot="time3">11:00am</option>
+  <option value="time3">11:00am</option>
 
 </select>
 
