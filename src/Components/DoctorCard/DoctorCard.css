@@ -12,7 +12,11 @@
   .cancel-appointment {
     background-color: red;
   }
-  
+  .disabled-btn {
+    opacity: 0.6;
+    cursor: not-allowed;
+    background-color: #cccccc;
+}
   .doctor-card-details-container {
     padding: 20px;
   }

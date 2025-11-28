@@ -10,10 +10,16 @@ const DoctorCard = ({ name, speciality, experience, ratings, profilePic, }) => {
   const [showModal, setShowModal] = useState(false);
   const [appointments, setAppointments] = useState([]);
   const [userData, setUserData] = useState(null);
+  const[hasExistingBooking, setHasExistingBooking] = useState(false);
 
   useEffect( () => {
     const userName = sessionStorage.getItem('name');
     const userEmail = sessionStorage.getItem('email');
+    const existingDoctorData = JSON.parse(localStorage.getItem('doctorData'));
+
+    if(existingDoctorData && existingDoctorData.doctorName === name ){
+      setHasExistingBooking(true);
+    }
 
     if (userName || userEmail) {
       setUserData ({
@@ -33,7 +39,8 @@ const DoctorCard = ({ name, speciality, experience, ratings, profilePic, }) => {
   const handleCancel = (appointmentId) => {
     const updatedAppointments = appointments.filter((appointment) => appointment.id !== appointmentId);
     setAppointments(updatedAppointments);
-    
+    setHasExistingBooking(false);
+
   
     // remove doctorData in localStorage as a JSON string.
     localStorage.removeItem('doctorData', JSON.stringify(doctorData));
@@ -83,14 +90,17 @@ const DoctorCard = ({ name, speciality, experience, ratings, profilePic, }) => {
        <Popup
           style={{ backgroundColor: '#FFFFFF' }}
           trigger={
-            <button className={`book-appointment-btn ${appointments.length > 0 ? 'cancel-appointment' : ''}`}>
-              {appointments.length > 0 ? (
-                <div>Cancel Appointment</div>
-              ) : (
-                <div>Book Appointment</div>
-              )}
-              <div>No Booking Fee</div>
-            </button>
+        <button className={`book-appointment-btn ${hasExistingBooking ? 'disabled-btn' : appointments.length > 0 ? 'cancel-appointment' : ''}`}
+        disabled={hasExistingBooking}>
+  {hasExistingBooking ? (
+    <div>Already Booked</div>
+  ) : appointments.length > 0 ? (
+    <div>Cancel Appointment</div>
+  ) : (
+    <div>Book Appointment</div>
+  )}
+  <div>No Booking Fee</div>
+</button>
           }
           modal
           open={showModal}

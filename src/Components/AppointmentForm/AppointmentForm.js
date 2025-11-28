@@ -79,11 +79,11 @@ const AppointmentForm = ({ doctorName, doctorSpeciality, onSubmi, userData }) =>
             required
           />
         </div>
-        <div>
+        <div className="form-group">
         <label htmlFor="selectedSlot">
 
 Book a time slot
-
+</label>
 <select    type="dropdown"
             id="selectedSlot"
             value={selectedSlot}
@@ -98,7 +98,7 @@ Book a time slot
 
 </select>
 
-</label>
+
 </div>
         <button type="submit">Book Now</button>
       </form>
