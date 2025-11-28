@@ -32,7 +32,7 @@ if (storedDoctorData && storedDoctorData.doctorName === name) {
         email: userEmail || '',
       });
     }
-  }, []);
+  }, [name]);
 
   const handleBooking = () => {
     setShowModal(true);
