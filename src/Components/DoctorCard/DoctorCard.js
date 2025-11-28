@@ -28,7 +28,7 @@ const DoctorCard = ({ name, speciality, experience, ratings, profilePic, }) => {
   };
   const doctorData = {
     name: name,
-    specialty: speciality,
+    speciality: speciality,
   };
   const handleCancel = (appointmentId) => {
     const updatedAppointments = appointments.filter((appointment) => appointment.id !== appointmentId);

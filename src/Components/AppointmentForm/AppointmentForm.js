@@ -30,7 +30,7 @@ const AppointmentForm = ({ doctorName, doctorSpeciality, onSubmi, userData }) =>
 
       const doctorData = {
         doctorName: doctorName,
-        specialty: doctorSpeciality,
+        speciality: doctorSpeciality,
         name: name,
         email: email,
         date: date,
@@ -90,11 +90,11 @@ Book a time slot
             onChange={(e) => setSelectedSlot(e.target.value)}
             required>
  <option value="">Select a time</option> 
-  <option value="time1">9:00am</option>
+  <option value="9:00am">9:00am</option>
 
-  <option value="time2">10:00am</option>
+  <option value="10:00am">10:00am</option>
 
-  <option value="time3">11:00am</option>
+  <option value="11:00am">11:00am</option>
 
 </select>
 
