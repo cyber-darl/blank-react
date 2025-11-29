@@ -6,20 +6,24 @@ const ReportsLayout = () => {
 
   useEffect(() => {
     const storedDoctorData = JSON.parse(localStorage.getItem('doctorData'));
-    if (storedDoctorData) {
+    console.log('Stored data:', storedDoctorData); // Debugging
+    
+    if (storedDoctorData && storedDoctorData.doctorName) {
       setReports([storedDoctorData]);
     }
   }, []);
 
   const handleViewReport = (report) => {
-    // Open report in modal or new page
-    alert(`Viewing report for Dr. ${report.doctorName}\nDate: ${report.date}\nSpeciality: ${report.speciality}`);
+    // Will open PDF in new tab
+    window.open('/sample-report.pdf', '_blank');
   };
 
   const handleDownloadReport = (report) => {
-    // Simulate download
-    alert(`Downloading report for Dr. ${report.doctorName}`);
-    // Actual implementation would generate/download PDF
+    // Will download PDF
+    const link = document.createElement('a');
+    link.href = '/sample-report.pdf';
+    link.download = `medical-report-${report.doctorName}.pdf`;
+    link.click();
   };
 
   return (
@@ -34,7 +38,6 @@ const ReportsLayout = () => {
                 <p><strong>Speciality:</strong> {report.speciality}</p>
                 <p><strong>Appointment Date:</strong> {report.date}</p>
                 <p><strong>Time:</strong> {report.selectedSlot}</p>
-                <p><strong>Patient:</strong> {report.name}</p>
               </div>
               <div className="report-actions">
                 <button 
@@ -53,7 +56,10 @@ const ReportsLayout = () => {
             </div>
           ))
         ) : (
-          <p className="no-reports">No medical reports found.</p>
+          <div className="no-reports">
+            <h3>Oops, no booked appointment</h3>
+            <p>You haven't booked any appointments yet.</p>
+          </div>
         )}
       </div>
     </div>

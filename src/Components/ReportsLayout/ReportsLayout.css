@@ -38,3 +38,12 @@
   background-color: #28a745;
   color: white;
 }
+.no-reports {
+  text-align: center;
+  padding: 40px;
+  color: #666;
+}
+
+.no-reports h3 {
+  margin-bottom: 10px;
+}

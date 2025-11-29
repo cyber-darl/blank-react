@@ -13,9 +13,8 @@ const AppointmentForm = ({ doctorName, doctorSpeciality, onSubmi, userData }) =>
     };
  
     const handleFormSubmit = (e) => {
-  e.preventDefault();
-  
-  // Check if selected date is in the past
+      e.preventDefault();
+// Check if selected date is in the past
   const selectedDate = new Date(date);
   const today = new Date();
   
@@ -23,30 +22,29 @@ const AppointmentForm = ({ doctorName, doctorSpeciality, onSubmi, userData }) =>
     alert('Please select a future date');
     return;
   }
+      onSubmi({ name, email, date, selectedSlot });
+      setName('');
+      setEmail('');
+      setDate('');
+      setSelectedSlot('');
 
-  // Create doctorData FIRST while values are still available
-  const doctorData = {
-    doctorName: doctorName,
-    speciality: doctorSpeciality,
-    name: name,           // These have actual values now
-    email: email,         
-    date: date,           
-    selectedSlot: selectedSlot
-  };
+      const doctorData = {
+        doctorName: doctorName,
+        speciality: doctorSpeciality,
+        name: name,
+        email: email,
+        date: date,
+        selectedSlot: selectedSlot
 
-  // Store doctorData in localStorage as a JSON string.
-  localStorage.setItem('doctorData', JSON.stringify(doctorData));
-  localStorage.removeItem('hideAppointmentCard');
+      };
+    
+      // Store doctorData in localStorage as a JSON string.
+      localStorage.setItem('doctorData', JSON.stringify(doctorData));
+      localStorage.removeItem('hideAppointmentCard');
+    
 
-  // Call parent submit handler
-  onSubmi({ name, email, date, selectedSlot });
 
-  // Reset form fields AFTER saving data
-  setName('');
-  setEmail('');
-  setDate('');
-  setSelectedSlot('');
-};
+    };
   
     return (
       <form onSubmit={handleFormSubmit} className="appointment-form">
