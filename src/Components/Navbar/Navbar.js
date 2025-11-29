@@ -74,7 +74,6 @@ const Navbar = () => {
          <Link to="/ProfileCard">Profile</Link>
         </li>
 
-        {isLoggedIn && (
         <li
   className="link dropdowns"
   onMouseEnter={() => setIsDropdownOpen(true)}
@@ -88,12 +87,12 @@ const Navbar = () => {
         <Link to="/profileform" className="dropdown-items">View Profile</Link>
       </li>
       <li>
-        <Link to="/settings" className="dropdown-items">Check Reports</Link>
+        <Link to="/reports" className="dropdown-items">Check Reports</Link>
       </li>
     </ul>
   )}
 </li>
-        )}
+        
         
 
         
