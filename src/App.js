@@ -39,7 +39,7 @@ function App() {
                  <Route path ="/DoctorCard" element={<DoctorCard/>} />
                  <Route path ="/profile" element={<ProfileCard/>} />
                  <Route path ="/profileform" element={<ProfileForm/>} />
-                <Route path ="/profileform" element={<ReportsLayout/>} />
+                <Route path ="/reports" element={<ReportsLayout/>} />
                    <Route path="/booking-consultation" element={<BookingConsultation />} />
               </Routes>
         </BrowserRouter>
