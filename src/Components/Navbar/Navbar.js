@@ -8,7 +8,6 @@ import "./Navbar.css";
 const Navbar = () => {
     const [click, setClick] = useState(false);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [username, setUsername] = useState("");
     const[email,setEmail]=useState("");
@@ -40,11 +39,12 @@ const Navbar = () => {
       setShowDropdown(!showDropdown);
     }
     useEffect(() => { 
-      const storedemail = sessionStorage.getItem("email");
-
-      if (storedemail) {
+      const storedName = sessionStorage.getItem("name");
+      const storedEmail = sessionStorage.getItem("email");
+      
+      if (storedEmail) {
             setIsLoggedIn(true);
-            setUsername(storedemail);
+            setUsername(storedName || storedEmail);
           }
         }, []);
   return (
@@ -79,7 +79,7 @@ const Navbar = () => {
   onMouseEnter={() => setIsDropdownOpen(true)}
   onMouseLeave={() => setIsDropdownOpen(false)}
 >
-  <Link to="#" className="dropdown-toggle">More</Link>
+  <Link to="#" className="dropdown-toggle">Welcome, {username}</Link>
 
   {isDropdownOpen && (
     <ul className="dropdown-menus">
