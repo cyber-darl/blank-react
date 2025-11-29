@@ -52,7 +52,6 @@ const Navbar = () => {
       <div className="nav__logo">
         <Link to="/">
         StayHealthy <i style={{color:'#2190FF'}} className="fa fa-user-md"></i></Link>
-        <span>.</span>
       </div>
       <div className="nav__icon" onClick={handleClick}>
         <i className={click ? "fa fa-times" : "fa fa-bars"}></i>
@@ -74,12 +73,14 @@ const Navbar = () => {
         <li className="link">
          <Link to="/ProfileCard">Profile</Link>
         </li>
+
+        {isLoggedIn && (
         <li
   className="link dropdowns"
   onMouseEnter={() => setIsDropdownOpen(true)}
   onMouseLeave={() => setIsDropdownOpen(false)}
 >
-
+  <Link to="#" className="dropdown-toggle">Welcome, {username}</Link>
 
   {isDropdownOpen && (
     <ul className="dropdown-menus">
@@ -92,13 +93,12 @@ const Navbar = () => {
     </ul>
   )}
 </li>
-
+        )}
         
 
         
         {isLoggedIn?(
           <>
-            <Link to="#" className="dropdown-toggle">Welcome, {username}</Link>
             <li className="link">
               <button className="btn2" onClick={handleLogout}>
                 Logout
