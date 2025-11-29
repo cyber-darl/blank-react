@@ -15,13 +15,13 @@ const ReportsLayout = () => {
 
   const handleViewReport = (report) => {
     // Will open PDF in new tab
-    window.open('/sample-report.pdf', '_blank');
+    window.open('/reports.pdf', '_blank');
   };
 
   const handleDownloadReport = (report) => {
     // Will download PDF
     const link = document.createElement('a');
-    link.href = '/sample-report.pdf';
+    link.href = '/reports.pdf';
     link.download = `medical-report-${report.doctorName}.pdf`;
     link.click();
   };
@@ -34,7 +34,7 @@ const ReportsLayout = () => {
           reports.map((report, index) => (
             <div key={index} className="report-card">
               <div className="report-info">
-                <h3>Dr. {report.doctorName}</h3>
+                <h3>{report.doctorName}</h3>
                 <p><strong>Speciality:</strong> {report.speciality}</p>
                 <p><strong>Appointment Date:</strong> {report.date}</p>
                 <p><strong>Time:</strong> {report.selectedSlot}</p>
