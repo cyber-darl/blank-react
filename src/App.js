@@ -15,7 +15,9 @@ import Chilling from './Components/Chilling';
 import BookingConsultation from './Components/BookingConsultation';
 import ProfileCard from './Components/ProfileCard/ProfileCard';
 import ProfileForm from './Components/ProfileCard/ProfileForm';
+import ReviewForm from './Components/ReviewForm/ReviewForm';
 import ReportsLayout from './Components/ReportsLayout/ReportsLayout';
+import ReviewsPage from './Components/ReviewForm/ReviewsPage';
 import FindDoctorSearch from './Components/FindDoctorSearch/FindDoctorSearch';
 
 // Function component for the main App
@@ -40,6 +42,9 @@ function App() {
                  <Route path ="/profile" element={<ProfileCard/>} />
                  <Route path ="/profileform" element={<ProfileForm/>} />
                 <Route path ="/reports" element={<ReportsLayout/>} />
+                <Route path ="/reviews" element={<ReviewForm/>} />
+                <Route path="/reviewspage" element={<ReviewsPage />} />
+
                    <Route path="/booking-consultation" element={<BookingConsultation />} />
               </Routes>
         </BrowserRouter>

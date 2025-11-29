@@ -1,0 +1,50 @@
+.star-rating {
+  display: flex;
+  gap: 5px;
+}
+
+.star-rating .star {
+  font-size: 24px;
+  cursor: pointer;
+  color: #ccc;
+}
+
+.star-rating .star.filled {
+  color: #ffc107;
+}
+
+.display-stars {
+  display: inline-flex;
+  gap: 2px;
+  margin-left: 10px;
+}
+
+.display-stars .star {
+  color: #ccc;
+  font-size: 18px;
+}
+
+.display-stars .star.filled {
+  color: #ffc107;
+}
+
+.warning {
+  color: red;
+  font-weight: bold;
+}
+.button-group {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.see-reviews-btn {
+  background-color: #6c757d00;
+  color: black;
+  border: 1px solid black;
+}
+
+.see-reviews-btn:hover {
+  background-color: #0466c8;
+  color: white;
+}

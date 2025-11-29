@@ -6,7 +6,7 @@ const ReportsLayout = () => {
 
   useEffect(() => {
     const storedDoctorData = JSON.parse(localStorage.getItem('doctorData'));
-    console.log('Stored data:', storedDoctorData); // Debugging
+   
     
     if (storedDoctorData && storedDoctorData.doctorName) {
       setReports([storedDoctorData]);
