@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './ReviewForm.css';
 
-function ReviewForm() {
+const ReviewForm = () => {
   const [showForm, setShowForm] = useState(false);
   const [showWarning, setShowWarning] = useState(false);
   const [formData, setFormData] = useState({

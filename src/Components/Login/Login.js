@@ -19,12 +19,13 @@ const Login = () => {
     if (sessionStorage.getItem("auth-token")) {
       navigate("/");
     }
-  }, []);
+  }, [navigate]);
 
   // Function to handle login form submission
   const login = async (e) => {
     e.preventDefault();
     // Send a POST request to the login API endpoint
+    try {
     const res = await fetch(`${API_URL}/api/auth/login`, {
       method: "POST",
       headers: {
@@ -55,6 +56,13 @@ const Login = () => {
       } else {
         alert(json.error);
       }
+    }
+    }
+ 
+
+       catch (error) {
+      console.error("Login failed:", error);
+      alert ("An error occured while logging in. Please try again.")
     }
   };
 
@@ -88,12 +96,15 @@ const Login = () => {
                   className="form-control" 
                   placeholder="Enter your email" 
                   aria-describedby="helpId" 
+                  required
                 />
               </div>
      {/* Input field for password */}
        {/*  write logic code for password input box */}
-    
-              <input 
+        <div className="form-group">
+                <label htmlFor="email">Password</label>
+                {/* Input field for password */}
+                 <input 
                   value={password} 
                   onChange={(e) => setPassword(e.target.value)} 
                   type="password" 
@@ -102,7 +113,10 @@ const Login = () => {
                   className="form-control" 
                   placeholder="password" 
                   aria-describedby="helpId" 
+                  required
                 />
+              </div>
+     
          
               <div className="btn-group">
                 {/* Login button */}

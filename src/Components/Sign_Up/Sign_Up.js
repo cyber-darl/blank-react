@@ -44,11 +44,26 @@ const Sign_Up = () => {
                 navigate('/');
             } else {
                 // Handle errors from the backend
-                if (json.errors) {
-                    setShowerr(json.errors.map((error) => error.msg).join(', '));
-                } else {
-                    setShowerr(json.error || 'Signup failed. Please try again.');
-                }
+          if (json.errors && Array.isArray(json.errors)) {
+    // If backend sends: { errors: [{msg: "..."}] }
+    setShowerr(json.errors.map((err) => err.msg).join(', '));
+    
+} else if (json.error && Array.isArray(json.error)) {
+    // If backend sends: { error: [{msg: "..."}] }
+    setShowerr(json.error.map((err) => err.msg).join(', '));
+    
+} else if (json.error && typeof json.error === 'object') {
+    // If backend sends: { error: { msg: "..." } }
+    setShowerr(json.error.msg || JSON.stringify(json.error));
+    
+} else if (json.error) {
+    // If backend sends a simple string: { error: "Something went wrong" }
+    setShowerr(json.error);
+    
+} else {
+    // Fallback if no specific error was found
+    setShowerr('Signup failed. Please check your details and try again.');
+}
             }
         } catch (error) {
             console.error('Error during registration:', error);

@@ -41,9 +41,6 @@ const AppointmentForm = ({ doctorName, doctorSpeciality, onSubmi, userData }) =>
       // Store doctorData in localStorage as a JSON string.
       localStorage.setItem('doctorData', JSON.stringify(doctorData));
       localStorage.removeItem('hideAppointmentCard');
-    
-
-
     };
   
     return (
@@ -91,10 +88,8 @@ Book a time slot
             required>
  <option value="">Select a time</option> 
   <option value="9:00am">9:00am</option>
-
-  <option value="10:00am">10:00am</option>
-
-  <option value="11:00am">11:00am</option>
+<option value="10:00am">10:00am</option>
+<option value="11:00am">11:00am</option>
 
 </select>
 
