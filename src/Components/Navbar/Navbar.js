@@ -77,7 +77,7 @@ const Navbar = () => {
   onMouseLeave={() => setIsDropdownOpen(false)}
 >
 
-
+  <Link to="#" className="dropdown-toggle">Profile</Link>
   {isDropdownOpen && (
     <ul className="dropdown-menus">
       <li>
@@ -95,7 +95,7 @@ const Navbar = () => {
         
         {isLoggedIn?(
           <>
-            <Link to="#" className="dropdown-toggle">Welcome, {username}</Link>
+            <li> Welcome, {username} </li>
             <li className="link">
               <button className="btn2" onClick={handleLogout}>
                 Logout
