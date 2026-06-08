@@ -199,3 +199,175 @@ li {
     100% {top: 0; left: 0; transform: scale(1);}
   }
   
+  /* =========================================
+   NEW SECTIONS STYLING (Added below Hero)
+   ========================================= */
+
+.landing-page-wrapper {
+    overflow-x: hidden; /* Prevents horizontal scrolling from blobs */
+}
+
+/* General Section Styles */
+.how-it-works-section,
+.services-section,
+.testimonials-section {
+    padding: 5rem 10%;
+    text-align: center;
+}
+
+.services-section {
+    background-color: #f8faff; /* Very light blue to break up the white background */
+}
+
+.section-title {
+    font-size: 40px;
+    font-weight: 800;
+    margin-bottom: 3rem;
+    color: #2f2f2f;
+}
+
+/* Grid Layout for Cards */
+.cards-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+/* Card Styling (Used in How it Works & Services) */
+.info-card, .service-card, .testimonial-card {
+    background: #ffffff;
+    padding: 2.5rem 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(4, 102, 200, 0.08);
+    flex: 1;
+    min-width: 250px;
+    max-width: 350px;
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.info-card:hover, .service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(4, 102, 200, 0.15);
+}
+
+.info-card h3, .service-card h3 {
+    font-size: 22px;
+    color: #0466c8;
+    margin-bottom: 15px;
+}
+
+.info-card p, .service-card p, .testimonial-card p {
+    color: #555;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+/* Special Element: Step Number */
+.step-number {
+    background: linear-gradient(45deg, #2190FF 2.34%, #0466c8 100.78%);
+    color: white;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+/* Testimonials Specific */
+.testimonial-card {
+    border-left: 5px solid #0466c8;
+    border-radius: 5px 15px 15px 5px;
+}
+.testimonial-card .quote {
+    font-style: italic;
+    margin-bottom: 20px;
+}
+.testimonial-card h4 {
+    color: #0466c8;
+    margin: 0;
+}
+
+/* =========================================
+   FOOTER STYLING
+   ========================================= */
+.footer {
+    background-color: #0d1b2a; /* Dark professional blue */
+    color: #fff;
+    padding: 4rem 10% 1rem 10%;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 40px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 2rem;
+    margin-bottom: 2rem;
+}
+
+.footer-brand h2 {
+    margin-top: 0;
+}
+.footer-logo {
+    cursor: pointer;
+    color: white;
+    font-weight: 700;
+    font-size: 24px;
+}
+.footer-brand p {
+    color: #aaa;
+    max-width: 300px;
+    line-height: 1.6;
+}
+
+.footer-links ul {
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    color: #fff;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #2190FF;
+}
+
+.footer-bottom {
+    text-align: center;
+    color: #aaa;
+    font-size: 14px;
+}
+
+/* Responsive updates for new sections */
+@media screen and (max-width: 980px) {
+    .section-title {
+        font-size: 32px;
+    }
+    .cards-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+    .info-card, .service-card, .testimonial-card {
+        max-width: 100%;
+        width: 100%;
+    }
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    .footer-brand p {
+        margin: 0 auto;
+    }
+}

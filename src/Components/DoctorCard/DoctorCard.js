@@ -6,7 +6,7 @@ import AppointmentForm from '../AppointmentForm/AppointmentForm';
 import { v4 as uuidv4 } from 'uuid'; //for giving every appointment a unique ID
 
 
-const DoctorCard = ({ name, specialty, experience, ratings, profilePic, }) => {
+const DoctorCard = ({ name, speciality, experience, ratings, profilePic, }) => {
   const [showModal, setShowModal] = useState(false);
   const [appointments, setAppointments] = useState([]);
   const [userData, setUserData] = useState(null);
@@ -39,7 +39,7 @@ if (storedDoctorData && storedDoctorData.doctorName === name) {
   };
   const doctorData = {
     name: name,
-    specialty: specialty,
+    speciality: speciality,
   };
   const handleCancel = (appointmentId) => {
     const updatedAppointments = appointments.filter((appointment) => appointment.id !== appointmentId);
@@ -76,7 +76,7 @@ if (storedDoctorData && storedDoctorData.doctorName === name) {
         </div>
         <div className="doctor-card-details">
           <div className="doctor-card-detail-name">{name}</div>
-          <div className="doctor-card-detail-specialty">{specialty}</div>
+          <div className="doctor-card-detail-speciality">{speciality}</div>
           <div className="doctor-card-detail-experience">{experience} years experience</div>
           <div className="doctor-card-detail-consultationfees">Ratings: {ratings}</div>
         </div>
@@ -115,7 +115,7 @@ if (storedDoctorData && storedDoctorData.doctorName === name) {
                 </div>
                 <div className="doctor-card-details">
                   <div className="doctor-card-detail-name">{name}</div>
-                  <div className="doctor-card-detail-specialty">{specialty}</div>
+                  <div className="doctor-card-detail-speciality">{speciality}</div>
                   <div className="doctor-card-detail-experience">{experience} years experience</div>
                   <div className="doctor-card-detail-consultationfees">Ratings: {ratings}</div>
                 </div>
@@ -135,7 +135,7 @@ if (storedDoctorData && storedDoctorData.doctorName === name) {
                   ))}
                 </>
               ) : (
-                <AppointmentForm  userData={userData} doctorName={name} doctorSpecialty={specialty} onSubmi={handleFormSubmit} />
+                <AppointmentForm  userData={userData} doctorName={name} doctorSpeciality={speciality} onSubmi={handleFormSubmit} />
               )}
             </div>
           )}
