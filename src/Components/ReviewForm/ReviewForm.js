@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Navbar from '../Navbar/Navbar';
 import { useNavigate } from 'react-router-dom';
 import './ReviewForm.css';
 
@@ -46,34 +47,56 @@ const ReviewForm = () => {
   };
 
   return (
-    <div>
-      <h2>Submit Your Review</h2>
+
+    <div className="review-container">
+       <Navbar />
+      <h2 className="review-title">Submit Your Review</h2>
+      
       {!showForm ? (
-        <div className="button-group">
-          <button onClick={handleButtonClick}>Write a Review</button>
-          <button onClick={handleSeeReviews} className="see-reviews-btn">
+        <div className="review-button-group">
+          <button className="review-btn review-btn-primary" onClick={handleButtonClick}>
+            Write a Review
+          </button>
+          <button className="review-btn review-btn-secondary" onClick={handleSeeReviews}>
             See My Reviews
           </button>
         </div>
       ) : (
-        <form onSubmit={handleSubmit}>
-          <h2>Give Your Feedback</h2>
-          {showWarning && <p className="warning">Please fill out all fields.</p>}
-          <div>
-            <label htmlFor="name">Name:</label>
-            <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} />
+        <form className="review-form-box" onSubmit={handleSubmit}>
+          <h2 className="review-title">Give Your Feedback</h2>
+          
+          {showWarning && <div className="review-warning">Please fill out all fields.</div>}
+          
+          <div className="review-form-group">
+            <label className="review-label" htmlFor="name">Name:</label>
+            <input 
+              className="review-input" 
+              type="text" 
+              id="name" 
+              name="name" 
+              value={formData.name} 
+              onChange={handleChange} 
+            />
           </div>
-          <div>
-            <label htmlFor="review">Review:</label>
-            <textarea id="review" name="review" value={formData.review} onChange={handleChange} />
+          
+          <div className="review-form-group">
+            <label className="review-label" htmlFor="review">Review:</label>
+            <textarea 
+              className="review-textarea" 
+              id="review" 
+              name="review" 
+              value={formData.review} 
+              onChange={handleChange} 
+            />
           </div>
-          <div>
-            <label>Rating:</label>
-            <div className="star-rating">
+          
+          <div className="review-form-group">
+            <label className="review-label">Rating:</label>
+            <div className="review-star-rating">
               {[1, 2, 3, 4, 5].map((star) => (
                 <span
                   key={star}
-                  className={star <= formData.rating ? "star filled" : "star"}
+                  className={`review-star ${star <= formData.rating ? "filled" : ""}`}
                   onClick={() => setFormData({ ...formData, rating: star })}
                 >
                   ★
@@ -81,7 +104,10 @@ const ReviewForm = () => {
               ))}
             </div>
           </div>
-          <button type="submit">Submit Review</button>
+          
+          <button className="review-btn review-btn-primary" type="submit">
+            Submit Review
+          </button>
         </form>
       )}
     </div>

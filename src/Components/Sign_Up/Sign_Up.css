@@ -1,7 +1,106 @@
+/* =========================================
+   SIGN UP PAGE STYLING
+   ========================================= */
+
+/* Center the sign-up card on the screen */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh; 
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Create a modern, elevated card for the form */
+.signup-grid {
+  background-color: #ffffff;
+  max-width: 500px; /* Slightly wider than login to accommodate more fields */
+  width: 100%;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(4, 102, 200, 0.08); /* Soft shadow */
+  border-top: 5px solid #2190FF; /* Accent border matching your theme */
+  text-align: left;
+}
+
+.signup-form {
+  margin-top: 10px;
+}
+
+/* Form Layout */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #4a5568;
+  font-size: 14px;
+}
+
+/* Input Fields */
 .form-control {
-    width: 100%;
-    padding: 8px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+  width: 100%;
+  padding: 12px 15px;
+  font-size: 15px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background-color: #f8fafc;
+  color: #2f2f2f;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+/* Smooth highlight effect when the user clicks to type */
+.form-control:focus {
+  outline: none;
+  border-color: #2190FF;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(33, 144, 255, 0.15);
+}
+
+/* Error Message Styling */
+.err {
+  background-color: #fff5f5; /* Very light red background */
+  color: #e53e3e !important; /* Forces the red text to override inline styles */
+  padding: 12px 15px;
+  border-radius: 8px;
+  border-left: 4px solid #e53e3e; /* Red accent edge */
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+/* Button Styling */
+.btn {
+  width: 100%;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 30px; /* Pill shape */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.btn-primary {
+  background: linear-gradient(45deg, #2190FF 2.34%, #0466c8 100.78%);
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(4, 102, 200, 0.2);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(4, 102, 200, 0.3);
+}
+
+/* Mobile Responsiveness */
+@media screen and (max-width: 480px) {
+  .signup-grid {
+    padding: 30px 20px;
+  }
 }

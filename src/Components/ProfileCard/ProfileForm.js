@@ -1,20 +1,15 @@
-// Following code has been commented with appropriate comments for your reference. 
-// Import necessary modules from React and other files
 import React, { useEffect, useState } from "react";
 import { API_URL } from "../../config";
 import { useNavigate } from "react-router-dom";
+import './ProfileForm.css'; // Make sure to import the CSS!
 
-// Define a Function component called ProfileForm
 const ProfileForm = () => {
-  // Set up state variables using the useState hook
   const [userDetails, setUserDetails] = useState({});
   const [updatedDetails, setUpdatedDetails] = useState({});
   const [editMode, setEditMode] = useState(false);
   
-  // Access the navigation functionality from React Router
   const navigate = useNavigate();
   
-  // Use the useEffect hook to fetch user profile data when the component mounts or updates
   useEffect(() => {
     const authtoken = sessionStorage.getItem("auth-token");
     if (!authtoken) {
@@ -24,11 +19,10 @@ const ProfileForm = () => {
     }
   }, [navigate]);
 
-  // Function to fetch user profile data from the API
   const fetchUserProfile = async () => {
     try {
       const authtoken = sessionStorage.getItem("auth-token");
-      const email = sessionStorage.getItem("email"); // Get the email from session storage
+      const email = sessionStorage.getItem("email"); 
 
       if (!authtoken) {
         navigate("/login");
@@ -36,7 +30,7 @@ const ProfileForm = () => {
         const response = await fetch(`${API_URL}/api/auth/user`, {
           headers: {
             "Authorization": `Bearer ${authtoken}`,
-            "Email": email, // Add the email to the headers
+            "Email": email, 
           },
         });
         if (response.ok) {
@@ -44,22 +38,18 @@ const ProfileForm = () => {
           setUserDetails(user);
           setUpdatedDetails(user);
         } else {
-          // Handle error case
           throw new Error("Failed to fetch user profile");
         }
       }
     } catch (error) {
       console.error(error);
-      // Handle error case
     }
   };
 
-  // Function to enable edit mode for profile details
   const handleEdit = () => {
     setEditMode(true);
   };
 
-  // Function to update state when user inputs new data
   const handleInputChange = (e) => {
     setUpdatedDetails({
       ...updatedDetails,
@@ -67,13 +57,12 @@ const ProfileForm = () => {
     });
   };
 
-  // Function to handle form submission when user saves changes
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
       const authtoken = sessionStorage.getItem("auth-token");
-      const email = sessionStorage.getItem("email"); // Get the email from session storage
+      const email = sessionStorage.getItem("email"); 
 
       if (!authtoken || !email) {
         navigate("/login");
@@ -92,73 +81,78 @@ const ProfileForm = () => {
       });
 
       if (response.ok) {
-        // Update the user details in session storage
         sessionStorage.setItem("name", updatedDetails.name);
         sessionStorage.setItem("phone", updatedDetails.phone);
 
         setUserDetails(updatedDetails);
         setEditMode(false);
-        // Display success message to the user
         alert(`Profile Updated Successfully!`);
         navigate("/");
       } else {
-        // Handle error case
         throw new Error("Failed to update profile");
       }
     } catch (error) {
       console.error(error);
-      // Handle error case
     }
   };
 
-  // Render the profile form with different sections based on edit mode
   return (
     <div className="profile-container">
       {editMode ? (
-        <form onSubmit={handleSubmit}>
-          <label>
-            Email
+        <form className="profile-card" onSubmit={handleSubmit}>
+          <h2 className="profile-title">Edit Profile</h2>
+          
+          <div className="profile-form-group">
+            <label className="profile-label">Email</label>
             <input
+              className="profile-input profile-disabled"
               type="email"
               name="email"
-              value={userDetails.email}
-              disabled // Disable the email field
+              value={userDetails.email || ''}
+              disabled
             />
-          </label>
-          {/* Create similar logic for displaying and editing name and phone from userDetails */}
-          <label>
-         Name
-         <input
-           type="text"
-           name="name"
-           value={updatedDetails.name}
-           onChange={handleInputChange}
-         />
-       </label>
-       <label>
-         Phone
-         <input
-           type="text"
-           name="phone"
-           value={updatedDetails.phone}
-           onChange={handleInputChange}
-         />
-       </label>
+          </div>
+          
+          <div className="profile-form-group">
+            <label className="profile-label">Name</label>
+            <input
+              className="profile-input"
+              type="text"
+              name="name"
+              value={updatedDetails.name || ''}
+              onChange={handleInputChange}
+            />
+          </div>
+          
+          <div className="profile-form-group">
+            <label className="profile-label">Phone</label>
+            <input
+              className="profile-input"
+              type="text"
+              name="phone"
+              value={updatedDetails.phone || ''}
+              onChange={handleInputChange}
+            />
+          </div>
 
-          <button type="submit">Save</button>
+          <button className="profile-btn profile-btn-primary" type="submit">
+            Save Changes
+          </button>
         </form>
       ) : (
-        <div className="profile-details">
-          <h1>Welcome, {userDetails.name}</h1>
-          {/* Implement code to display and allow editing of phone and email similar to above */}
-          <p> <b>Email:</b> {userDetails.email}</p>
-          <p><b>Phone:</b> {userDetails.phone}</p>
-          <button onClick={handleEdit}>Edit</button>
+        <div className="profile-card">
+          <h1 className="profile-title">Welcome, {userDetails.name}</h1>
+          <div className="profile-info-block">
+            <p className="profile-text"><b>Email:</b> {userDetails.email}</p>
+            <p className="profile-text"><b>Phone:</b> {userDetails.phone}</p>
+          </div>
+          <button className="profile-btn profile-btn-primary" onClick={handleEdit}>
+            Edit Profile
+          </button>
         </div>
       )}
     </div>
   );
 };
 
-// Export the ProfileForm component as the default export
 export default ProfileForm;

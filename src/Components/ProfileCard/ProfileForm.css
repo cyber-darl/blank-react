@@ -1,0 +1,148 @@
+/* =========================================
+   PROFILE FORM STYLING
+   ========================================= */
+
+/* Center everything on the page */
+.profile-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 70vh;
+  padding: 40px 20px;
+  box-sizing: border-box;
+}
+
+/* The Main Card (Used for both View and Edit modes) */
+.profile-card {
+  background-color: #ffffff;
+  max-width: 500px;
+  width: 100%;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(4, 102, 200, 0.08);
+  border-top: 5px solid #2190FF;
+  box-sizing: border-box;
+  text-align: center;
+  animation: fadeIn 0.4s ease-out;
+}
+
+/* Headers */
+.profile-title {
+  color: #0d213f;
+  font-size: 28px;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 25px;
+}
+
+/* View Mode Details */
+.profile-info-block {
+  background-color: #f8fafc;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 25px;
+  text-align: left;
+  border: 1px solid #e2e8f0;
+}
+
+.profile-text {
+  font-size: 16px;
+  color: #4a5568;
+  margin: 10px 0;
+}
+
+.profile-text b {
+  color: #0d213f;
+  margin-right: 8px;
+}
+
+/* Form Layout for Edit Mode */
+.profile-form-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.profile-label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #4a5568;
+  font-size: 14px;
+}
+
+/* Input Fields */
+.profile-input {
+  width: 100%;
+  padding: 12px 15px;
+  font-size: 15px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background-color: #f8fafc;
+  color: #2f2f2f;
+  box-sizing: border-box;
+  font-family: inherit;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.profile-input:focus {
+  outline: none;
+  border-color: #2190FF;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(33, 144, 255, 0.15);
+}
+
+/* Special styling for the disabled Email field */
+.profile-disabled {
+  background-color: #e2e8f0;
+  color: #718096;
+  cursor: not-allowed;
+  border-color: #cbd5e1;
+}
+
+.profile-disabled:focus {
+  box-shadow: none;
+  border-color: #cbd5e1;
+}
+
+/* Buttons */
+.profile-btn {
+  width: 100%;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.profile-btn-primary {
+  background: linear-gradient(45deg, #2190FF 2.34%, #0466c8 100.78%);
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(4, 102, 200, 0.2);
+}
+
+.profile-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(4, 102, 200, 0.3);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile Responsiveness */
+@media screen and (max-width: 480px) {
+  .profile-card {
+    padding: 30px 20px;
+  }
+}
