@@ -1,12 +1,13 @@
 This file contains instructions about StayHealthyinc. website
 Frontend is hosted in Vercel
-Backend handled by Render in a separate repository - blank-server
-To run app locally run npm start in the root file
-Go to the server file by running cd server, then run npm install and npm start
+Production Backend handled by Render in a separate repository - blank-server
+To run the frontend locally run npm start in the root file
+To run the server locally, go to the server file by running cd server, then run npm install and node index
 Database is in MongoDB
 
 - Always use npm start for this project, 
 - you may choose to run npm install react-scripts, before npm start, to updated any deprecated dependencies
+
 
 Follow these steps to view in your local machine, to create and view a file,using vite, from scratch
 - git clone 
